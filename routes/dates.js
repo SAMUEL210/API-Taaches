@@ -1,9 +1,10 @@
 const express = require("express");
+var { checkToken } = require("../utilities/token");
 var router = express.Router();
 
 var dateModel = require("../models/date");
 
-router.post("/", async(req, rep) => {
+router.post("/", checkToken, async(req, rep) => {
     let { body } = req;
     try {
         var date = new dateModel(body);
@@ -14,17 +15,17 @@ router.post("/", async(req, rep) => {
     }
 });
 
-router.get("/", async(req, rep) => {
+router.get("/", checkToken, async(req, rep) => {
     var dates = await dateModel.find({});
     rep.status(200).send({ dates });
 });
 
-router.get("/u/:id", async(req, rep) => {
+router.get("/u/:id", checkToken, async(req, rep) => {
     var dates = await dateModel.find({ utilisateur: req.params.utilisateur });
     rep.status(200).send({ dates });
 });
 
-router.put("/:id", async(req, rep) => {
+router.put("/:id", checkToken, async(req, rep) => {
     var date = await dateModel.findOneAndUpdate({ _id: req.params.id },
         req.body, { new: true }
     );
@@ -32,7 +33,7 @@ router.put("/:id", async(req, rep) => {
 });
 
 //DELETE Toutes les Dates
-router.delete("/", async(req, rep) => {
+router.delete("/", checkToken, async(req, rep) => {
     var dates = await dateModel.find({});
     for (let i = 0; dates.length; i++) {
         await dateModel.findOneAndRemove({ _id: dates[i]._id });
@@ -41,7 +42,7 @@ router.delete("/", async(req, rep) => {
 });
 
 //DELETE Date par son ID
-router.delete("/:id", async(req, rep) => {
+router.delete("/:id", checkToken, async(req, rep) => {
     await dateModel.find({ _id: req.params.id });
     rep.status(200).send({ succes: "OK" });
 });
