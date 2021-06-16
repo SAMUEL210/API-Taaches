@@ -1,0 +1,19 @@
+{
+    "name": "taaches",
+    "version": "1.0.0",
+    "description": "Gestion des taaches au contidient",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node ./index.js"
+    },
+    "author": "Samuel Ibou MARONE",
+    "license": "ISC",
+    "dependencies": {
+        "crypto": "^1.0.1",
+        "email-validator": "^2.0.4",
+        "express": "^4.17.1",
+        "jsonwebtoken": "^8.5.1",
+        "mongoose": "^5.12.11"
+    }
+}
