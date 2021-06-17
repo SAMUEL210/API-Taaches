@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-var utModel = require("../models/utilisateur");
+// const utModel = require("./utilisateur");
 
 const taachesSchema = new mongoose.Schema({
     utilisateur: {
@@ -20,11 +20,11 @@ const taachesSchema = new mongoose.Schema({
     },
 });
 
-taachesSchema.pre("save", async function(next) {
-    let utilisateur = await utModel.find({ _id: this.utilisateur });
-    if (!utilisateur) next(Error("UTILISATEUR_EXIST_PAS"));
-    else next();
-});
+// taachesSchema.pre("save", async function(next) {
+//     let ut = await utModel.find({ _id: this.utilisateur });
+//     if (!ut) next(Error("ut_EXIST_PAS"));
+//     else next();
+// });
 
 var taachesModel = mongoose.model("taache", taachesSchema);
 

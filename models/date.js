@@ -34,6 +34,7 @@ dateSchema.pre("save", async function(next) {
         }
     }
 });
+
 var dateModel = mongoose.model("date", dateSchema);
 
 module.exports = dateModel;
