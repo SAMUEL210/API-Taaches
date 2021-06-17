@@ -24,4 +24,5 @@ router.put("/:id", checkToken, async(req, rep) => {
     );
     res.status(200).send({ utilisateur });
 });
+
 module.exports = router;

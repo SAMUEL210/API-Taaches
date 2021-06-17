@@ -1,4 +1,5 @@
 const crypto = require("crypto");
+require("dotenv").config();
 
 const algorithm = process.env.crypto_algo;
 const secretKey = process.env.crypto_secret_key;
