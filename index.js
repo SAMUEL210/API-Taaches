@@ -6,6 +6,7 @@ var routerTaache = require("./routes/taaches");
 var routerDate = require("./routes/dates");
 var routerLogin = require("./routes/login");
 var routerSignIn = require("./routes/signUp");
+var cors = require("cors");
 
 var app = express();
 
@@ -20,6 +21,7 @@ bd.on("error", console.error.bind(console, "ERREUR CONENCTION: "));
 bd.once("open", () => console.log("STATUS_BD : ", bd.states[bd._readyState]));
 
 app.use(express.json());
+app.use(cors({ origin: "http://127.0.0.1:5500" }));
 
 app.use("/utilisateurs", routerUtilisateur);
 app.use("/taaches", routerTaache);
