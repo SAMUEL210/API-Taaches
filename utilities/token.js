@@ -1,10 +1,9 @@
 const jwt = require("jsonwebtoken");
-const utilities = require("../utilities/utilities");
-const utilisateurModel = require("../models/utilisateur");
+require("dotenv").config();
 
 const createToken = (utilisateur) => {
     delete utilisateur.mp;
-    const token = jwt.sign({ utilisateur }, utilities.jwt_secret_key, {
+    const token = jwt.sign({ utilisateur }, process.env.jwt_secret_key, {
         expiresIn: "7d",
     });
     return "Bearer " + token;
@@ -17,7 +16,7 @@ const checkToken = (req, rep, next) => {
     }
 
     if (token) {
-        jwt.verify(token, utilities.jwt_secret_key, (err, decoded) => {
+        jwt.verify(token, process.env.jwt_secret_key, (err, decoded) => {
             if (err) {
                 rep.send({ error: "TOKEN_PAS_VALIDE" });
             } else {
@@ -27,7 +26,7 @@ const checkToken = (req, rep, next) => {
                 const newToken = jwt.sign({
                         user: decoded.user,
                     },
-                    utilities.jwt_secret_key, {
+                    process.env.jwt_secret_key, {
                         expiresIn: expiresIn,
                     }
                 );

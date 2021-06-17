@@ -1,8 +1,7 @@
 const crypto = require("crypto");
-var { crypto_algo, crypto_secret_key } = require("./utilities");
 
-const algorithm = crypto_algo;
-const secretKey = crypto_secret_key;
+const algorithm = process.env.crypto_algo;
+const secretKey = process.env.crypto_secret_key;
 const iv = crypto.randomBytes(16);
 
 const encrypt = (text) => {
