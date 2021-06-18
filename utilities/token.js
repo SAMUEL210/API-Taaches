@@ -10,7 +10,7 @@ const createToken = (utilisateur) => {
 };
 
 const checkToken = (req, rep, next) => {
-    let token = req.headers["x-access-token"] || req.headers["Authorization"];
+    let token = req.headers["x-access-token"] || req.headers["authorization"];
     if (token && token.startsWith("Bearer ")) {
         token = token.slice(7, token.length);
     }
