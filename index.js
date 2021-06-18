@@ -22,7 +22,7 @@ bd.on("error", console.error.bind(console, "ERREUR CONENCTION: "));
 bd.once("open", () => console.log("STATUS_BD : ", bd.states[bd._readyState]));
 
 app.use(express.json());
-app.use(cors({ origin: "*" }));
+app.use(cors({ origin: "*", exposedHeaders: "authorization" }));
 
 app.use("/", routerHome);
 app.use("/utilisateurs", routerUtilisateur);
