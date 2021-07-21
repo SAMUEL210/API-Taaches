@@ -4,7 +4,6 @@ var routerUtilisateur = require("./routes/utilisateurs");
 var routerTaache = require("./routes/taaches");
 var routerDate = require("./routes/dates");
 var routerLogin = require("./routes/login");
-var routerSignIn = require("./routes/signUp");
 var routerHome = require("./routes/home");
 var cors = require("cors");
 require("dotenv").config();
@@ -29,7 +28,6 @@ app.use("/utilisateurs", routerUtilisateur);
 app.use("/taaches", routerTaache);
 app.use("/dates", routerDate);
 app.use("/login", routerLogin);
-app.use("/signin", routerSignIn);
 
 const HOST = process.env.HOST || "http://localhost";
 const PORT = process.env.PORT || 3000;

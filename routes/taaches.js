@@ -68,14 +68,14 @@ router.delete("/:id", checkToken, async(req, rep) => {
     rep.status(200).send({ succes: "OK" });
 });
 
-// DELETE toutes les taches
-// router.delete("/", checkToken, async(req, rep) => {
-//     var taaches = await taaModel.find({});
-//     for (let i = 0; i < taaches.length; i++) {
-//         await taaModel.findOneAndRemove({ _id: taaches[i]._id });
-//     }
-//     rep.status(200).send({ succes: "OK" });
-// });
+//DELETE toutes les taches
+router.delete("/", checkToken, async(req, rep) => {
+    var taaches = await taaModel.find({});
+    for (let i = 0; i < taaches.length; i++) {
+        await taaModel.findOneAndRemove({ _id: taaches[i]._id });
+    }
+    rep.status(200).send({ succes: "OK" });
+});
 
 // DELETE toutes les taches de l'utilisateur.
 router.delete("/s/u/:id", checkToken, async(req, rep) => {
