@@ -42,5 +42,5 @@ const checkToken = (req, rep, next) => {
 
 module.exports = {
     createToken: createToken,
-    checkToken: checkToken,
-};
+    checkToken: checkToken
+}

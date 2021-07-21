@@ -67,4 +67,3 @@ TAACHES :
     DELETE
         - https://api.exemple.com/taaches/id
         - https://api.exemple.com/taaches/s/u/id (Delete all taaches of the user(id))
-
